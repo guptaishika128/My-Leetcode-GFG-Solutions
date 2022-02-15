@@ -1,18 +1,19 @@
+
 class Solution {
 public:
+    int qb[31];
     int fib(int n) {
-        vector<int> qb(n+1,0);
         
-         if(n<=1){
+        if(n<=1){
             return n;
         }
         
-       qb[0] = 0;
-       qb[1] =1;
-        
-        for(int i=2;i<=n;i++){
-            qb[i] = qb[i-1] + qb[i-2];
+        if(qb[n] != 0){
+            return qb[n];
         }
-        return qb[n];
+       
+        int fibn1 = fib(n-1) + fib(n-2);
+        qb[n] = fibn1;
+        return fibn1;
     }
 };
