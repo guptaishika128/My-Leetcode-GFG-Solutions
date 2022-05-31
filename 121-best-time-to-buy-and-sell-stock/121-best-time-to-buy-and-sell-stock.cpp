@@ -1,16 +1,23 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int minprice = INT_MAX;
-        int maxprofit = 0;
-        for(int i=0;i<prices.size();i++){
-            if(prices[i]<minprice){
-                minprice=prices[i];
-            }
-            if(maxprofit<prices[i]-minprice){
-                maxprofit = prices[i]-minprice;
-            }
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        if(prices.size() == 1){
+            return 0;
         }
-        return maxprofit;
+       
+        int maxDiff = prices[1] - prices[0];
+        int minElem = prices[0];
+        
+        for(int i=0;i<prices.size();i++){
+            minElem = min(minElem,prices[i]);
+            maxDiff = max(maxDiff,prices[i]-minElem);
+        }
+        
+        return maxDiff;
+
+
     }
 };
