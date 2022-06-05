@@ -35,8 +35,8 @@ public:
 				if (sum == target) {
 					result.push_back({nums[i], nums[j], nums[left], nums[right]});
 					int last_left = nums[left], last_right = nums[right];
-					while (left < right and nums[left] == last_left) ++left;
-					while (left < right and nums[right] == last_right) --right;
+					while (left < right and nums[left] == last_left) left++;
+					while (left < right and nums[right] == last_right) right--;
 				} else if (sum < target) {
 					++left;
 				} else {
