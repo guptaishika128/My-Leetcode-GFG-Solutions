@@ -1,6 +1,9 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
     int n = nums.size();
     
      for(int i = 0; i < n; ++ i)
