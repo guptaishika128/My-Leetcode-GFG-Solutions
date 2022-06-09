@@ -42,23 +42,17 @@ public:
         }
         return overallprofit;
         */
-    int left[prices.size()];
-    int right[prices.size()];
-    left[0]=0;
-    
-    int mini=prices[0];
-    for(int i=1;i<prices.size();i++){
-        mini=min(mini,prices[i]);
-        left[i]=max(prices[i]-mini,left[i-1]);
-    }
-    right[prices.size()-1]=0;
-    int maxi=prices.back();
-    int res=0;
-    for(int i=prices.size()-2;i>=0;i--){
-        maxi=max(prices[i],maxi);
-        right[i]=max(right[i+1],maxi-prices[i]);
-        res=max(res,right[i]+left[i]);
-    }
-    return res;
+        int buy1 = INT_MAX;
+        int profit1 = INT_MIN;
+        int buy2 = INT_MAX;
+        int profit2 = INT_MIN;
+        
+        for(int i=0;i<prices.size();i++){
+            buy1 = min(buy1,prices[i]);
+            profit1 = max(profit1 , prices[i]-buy1);
+            buy2 = min(buy2 , prices[i]-profit1);
+            profit2 = max(profit2,prices[i]-buy2);
+        }
+        return profit2;
     }
 };
