@@ -11,9 +11,7 @@ public:
         if(qb[n] != 0){
             return qb[n];
         }
-       
-        int fibn1 = fib(n-1) + fib(n-2);
-        qb[n] = fibn1;
-        return fibn1;
+      
+        return qb[n] = fib(n-1) + fib(n-2);
     }
 };
