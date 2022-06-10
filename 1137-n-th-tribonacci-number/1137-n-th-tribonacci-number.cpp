@@ -13,9 +13,6 @@ public:
             return tb[n];
         }
         
-        
-        int trib = tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3);
-        tb[n] = trib;
-        return trib;
+        return tb[n] = tribonacci(n-1) + tribonacci(n-2) + tribonacci(n-3);
     }
 };
