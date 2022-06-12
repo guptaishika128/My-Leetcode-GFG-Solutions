@@ -1,15 +1,19 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int inc = nums[0];
-        int exc = 0;
+        int prev = nums[0];
+        int prev2 =0;
         
         for(int i=1;i<nums.size();i++){
-            int ninc = exc + nums[i];
-            int nexc = max(exc, inc);
-              
-            inc = ninc;
-            exc = nexc;
+            int take = nums[i];
+            if(i>1){
+                take += prev2;
+            }
+            int nottake = 0 + prev;
+            int curr = max(take,nottake);
+            prev2 = prev;
+            prev = curr;
         }
-        return max(inc,exc); }
+        return prev; 
+    }
 };
