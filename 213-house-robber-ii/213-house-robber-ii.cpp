@@ -1,35 +1,41 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int a1 , a2;
-        if(nums.size() <= 3){
-            return *max_element(nums.begin(), nums.end());
+        if(nums.size()<2){
+            return nums[0];
         }
+        int prev = nums[0];
+        int prev2 =0;
+        int a1 = 0;
+        int a2 =0;
         
-        int inc = nums[0];
-        int exc = 0;
-       
         for(int i=1;i<nums.size()-1;i++){
-            int ninc = exc + nums[i];
-            int nexc = max(inc,exc);
-            
-            inc = ninc;
-            exc = nexc;
+            int take = nums[i];
+            if(i>1){
+                take += prev2;
+            }
+            int nottake = 0 + prev;
+            int curr = max(take,nottake);
+            prev2 = prev;
+            prev = curr;
         }
-             a1= max(inc,exc);
+        a1 = prev;
         
-         inc = nums[1];
-         exc = 0;
-       
+        prev = nums[1];
+        prev2 =0;
+        
         for(int i=2;i<nums.size();i++){
-            int ninc = exc + nums[i];
-            int nexc = max(inc,exc);
-            
-            inc = ninc;
-            exc = nexc;
+            int take = nums[i];
+            if(i>1){
+                take += prev2;
+            }
+            int nottake = 0 + prev;
+            int curr = max(take,nottake);
+            prev2 = prev;
+            prev = curr;
         }
-             a2= max(inc,exc);
+        a2 = prev;
         
-     return max(a1,a2);
+        return max(a1,a2);
     }
 };
