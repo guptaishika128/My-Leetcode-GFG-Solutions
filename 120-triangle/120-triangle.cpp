@@ -1,6 +1,9 @@
 class Solution {
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
+         ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+        
         int n= triangle.size();
         vector<vector<int>> dp(n,vector<int>(n,0));
         
