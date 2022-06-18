@@ -1,6 +1,9 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices, int fee) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+
         int obsp = -prices[0];
         int ossp = 0;
         
