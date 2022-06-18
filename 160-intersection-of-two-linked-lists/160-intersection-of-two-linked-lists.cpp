@@ -9,6 +9,9 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+
         ListNode* temp1 = headA;
         ListNode* temp2 = headB;
         
