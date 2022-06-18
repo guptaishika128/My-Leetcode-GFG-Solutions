@@ -9,16 +9,13 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-      while(headB != NULL) {
-        ListNode* temp = headA;
-        while(temp != NULL) {
-            //if both nodes are same
-            if(temp == headB) return headB;
-            temp = temp->next;
+        ListNode* temp1 = headA;
+        ListNode* temp2 = headB;
+        
+        while(temp1!=temp2){
+            temp1= temp1==NULL ? headB:temp1=temp1->next;
+            temp2= temp2==NULL ? headA:temp2=temp2->next;
         }
-        headB = headB->next;
-    }
-    //intersection is not present between the lists return null
-    return NULL;
+        return temp2;
     }
 };
