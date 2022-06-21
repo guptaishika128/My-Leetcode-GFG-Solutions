@@ -7,17 +7,21 @@ public:
         
         int cnt =0;
         int diff;
+        int ind =0;
+        int prev_diff = nums[1]-nums[0];
         
-        for(int i=0;i<nums.size()-2;i++){
-            diff =nums[i+1]-nums[i];
+        for(int i=1;i<nums.size()-1;i++){
+             int diff = nums[i+1] - nums[i];
             
-            for(int j=i+2;j<nums.size();j++){
-                if(nums[j]-nums[j-1]==diff){
-                    cnt++;
-                }else{
-                    break;
+            // if we find same diff of consecutive elements
+            // increase count
+            if(diff ==  prev_diff)
+                ++ind;
+           else{
+                    prev_diff = diff;
+                    ind = 0;
                 }
-            }
+            cnt += ind;
         }
         return cnt;
     }
