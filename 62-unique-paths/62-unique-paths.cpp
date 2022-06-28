@@ -20,6 +20,8 @@ public:
        /* vector<vector<int>> dp(m,vector<int>(n,-1));
         return pathsCount(m-1,n-1,dp);
       */
+        
+        // Using Combinatorics
         int totaldir = m+n-2;
         int r = m-1;
         double res = 1;
