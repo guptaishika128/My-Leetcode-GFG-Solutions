@@ -1,7 +1,7 @@
 class Solution {
 public:
     int myAtoi(string s) {
-        int sign = 1, base = 0, i = 0;
+       int sign = 1, base = 0, i = 0;
      
     // if whitespaces then ignore.
     while (s[i] == ' ')
@@ -9,12 +9,15 @@ public:
         i++;
     }
      
-    // sign of number
-    if (s[i] == '-' || s[i] == '+')
-    {
-        sign = 1 - 2 * (s[i++] == '-');
-    }
+    
    
+     
+        if(s[i]=='-'||s[i]=='+')          //check if number positve or negative
+        {
+            sign=s[i]=='-'?-1:1;
+            i++;
+        }
+        
     // checking for valid input
     while (s[i] >= '0' && s[i] <= '9')
     {
@@ -31,5 +34,6 @@ public:
         base = 10 * base + (s[i++] - '0');
     }
     return base * sign;
+    
     }
 };
