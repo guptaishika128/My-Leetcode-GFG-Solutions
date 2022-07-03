@@ -1,7 +1,8 @@
 class Solution {
 public:
-       vector<string> dict = { "","","abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+    vector<string> dict = {"", "", "abc" , "def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     
+  
     vector<string> letter(string digits){
         if(digits.size()==0){  //base case
             vector<string> hhh;
