@@ -25,7 +25,7 @@ public:
 
             if(nums[start] <= nums[mid]) { // left array is sorted. So the pivot is on the right side
                 start = mid+1;
-            } else { //right array is sorted. So the pivot is on the left side
+            } else if(nums[end]>= nums[mid]) { //right array is sorted. So the pivot is on the left side
                 end = mid-1;
             }
         }
