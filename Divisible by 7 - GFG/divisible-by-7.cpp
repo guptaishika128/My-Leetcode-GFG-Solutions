@@ -9,14 +9,11 @@ class Solution{
   public:
     int isdivisible7(string num){
         //complete the function here
-        int hasil=0;
-       for(int i=0;i<num.size();i++)
-       {
-           string s=to_string(hasil)+num[i];
-           hasil=stoi(s)%7;        
+        int rem = 0;
+       for(int i=0;i<num.length();i++){
+           rem = ((rem*10)+(num[i]-'0'))%7;
        }
-       return hasil==0?1:0;
-    }
+       return rem == 0?1:0;}
 };
 
 // { Driver Code Starts.
