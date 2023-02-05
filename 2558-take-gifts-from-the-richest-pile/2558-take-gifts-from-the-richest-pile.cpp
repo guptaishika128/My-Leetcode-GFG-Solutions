@@ -4,10 +4,8 @@ public:
     
     long long pickGifts(vector<int>& gifts, int k) {
         
-        priority_queue<long long> pq;
-        for(auto it:gifts){
-            pq.push(it);
-        }
+        priority_queue<long long> pq(gifts.begin(),gifts.end());
+       
         
         long long sum = 0;
         
