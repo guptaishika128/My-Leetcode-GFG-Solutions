@@ -26,10 +26,15 @@ class Solution
     {
         // Your code here  
         for(int i=n-1;i>=0;i--){
+            int noswap = 0;
             for(int j=0;j<i;j++){
                 if(arr[j]>arr[j+1]){
                     swap(arr[j],arr[j+1]);
+                    noswap = 1;
                 }
+            }
+            if(noswap == 0){
+                break;
             }
         }
     }
