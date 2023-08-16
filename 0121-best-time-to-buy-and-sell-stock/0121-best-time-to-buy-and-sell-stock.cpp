@@ -8,11 +8,9 @@ public:
        int maxprofit = INT_MIN;
         int minprice = prices[0];
         for(int i=0;i<n;i++){
-            if(prices[i]<minprice){
-                minprice = prices[i];
-            } else if(prices[i]-minprice>maxprofit){
-                maxprofit = prices[i]-minprice;
-            }
+           int cost = prices[i] - minprice;
+            maxprofit = max(maxprofit , cost);
+            minprice = min(minprice,prices[i]);
         }
         return maxprofit;
     }
