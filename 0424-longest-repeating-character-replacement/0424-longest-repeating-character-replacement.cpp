@@ -1,27 +1,42 @@
 class Solution {
+private:
+    bool canMakeValidSubstring(string s, int substringlen , int k){
+        // takes a window of length substring_len on the given string and see if its valid
+        vector<int> freq(26,0);
+        int maxfreq = 0;
+        int start = 0;
+        
+        for(int end = 0;end<s.length();end++){
+            freq[s[end]-'A']++;
+            
+            if(end-start+1>substringlen){
+                freq[s[start]-'A']--;
+                start++;
+            }
+            
+            maxfreq = max(maxfreq , freq[s[end]-'A']);
+            
+            if(substringlen - maxfreq <= k){
+                return true;
+            }
+        }
+        
+        return false;
+    }
 public:
     int characterReplacement(string s, int k) {
-         vector<int> counts(26, 0);
-        int start = 0;
-        int maxCharCount = 0;
-        int n = s.length();
-        int result = 0;
-        for(int end = 0; end < n; end++){
-            counts[s[end]-'A']++;
-            if(maxCharCount < counts[s[end]-'A']){
-                maxCharCount = counts[s[end]-'A'];
+        int lo = 1;
+        int hi = s.length()+1;
+        
+        while(lo+1<hi){
+            int mid = (lo+hi)/2;
+            
+            if(canMakeValidSubstring(s,mid,k)){
+                lo = mid;
+            } else{
+                hi = mid;  
             }
-            while(end-start-maxCharCount+1 > k){
-                counts[s[start]-'A']--;
-                start++;
-                for(int i = 0; i < 26; i++){
-                    if(maxCharCount < counts[i]){
-                        maxCharCount = counts[i];
-                    }
-                }
-            }
-            result = max(result, end-start+1);
         }
-        return result;
+        return lo;
     }
 };
