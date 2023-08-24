@@ -34,13 +34,9 @@ public:
             
             max_freq = max(max_freq,freq[s[end]-'A']);
             
-            while(end-start+1-max_freq>k){
+            if(end-start+1-max_freq>k){
                 freq[s[start]-'A']--;
                 start++;
-                
-                for(int i=0;i<26;i++){
-                    max_freq = max(max_freq, freq[i]);
-                }
             }
             result = max(result,end-start+1);
         }
