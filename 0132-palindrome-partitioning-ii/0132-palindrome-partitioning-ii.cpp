@@ -30,8 +30,21 @@ public:
     
     int minCut(string s) {
         int n= s.length();
-        vector<int> dp(n,-1);
-       return solve(0,s,dp)-1;;
+        vector<int> dp(n+1,0);
+        dp[n] = 0;
+        
+        for(int i=n-1;i>=0;i--){
+             int minCut = INT_MAX;
+        
+            for(int j=i;j<n;j++){
+                if(isPalindrome(s,i,j)){
+                    int cut = 1 + dp[j+1];
+                    minCut = min(minCut,cut);
+                }
+            }
+            dp[i] = minCut;
+        }
+       return dp[0]-1;
         
     }
 };
