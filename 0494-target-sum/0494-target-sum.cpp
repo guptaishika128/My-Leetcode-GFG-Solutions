@@ -38,7 +38,33 @@ public:
             return 0;
         }
         int k = (totalSum-target)/2;
-        vector<vector<int>> dp(n,vector<int>(k+1,-1));
-        return solve(n-1,k,nums,dp);
+        vector<vector<int>> dp(n,vector<int>(k+1,0));
+        // return solve(n-1,k,nums,dp);
+        
+        if(nums[0] == 0){
+            dp[0][0] = 2;
+        }
+        else{
+            dp[0][0] = 1;
+        }
+        
+        if(nums[0]!= 0  && nums[0]<=k){
+            dp[0][nums[0]] = 1;
+        }
+        
+        for(int ind=1;ind<n;ind++){
+            for(int target = 0;target<=k;target++){
+                    int notTake = dp[ind-1][target];
+        
+                    int take = 0;
+
+                    if(nums[ind]<=target){
+                        take = dp[ind-1][target-nums[ind]];
+                    }
+
+            dp[ind][target] = take+notTake;
+            }
+        }
+        return dp[n-1][k];
     }
 };
