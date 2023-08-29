@@ -32,11 +32,9 @@ public:
                         if(pslc == '.' || pslc == sc){
                             dp[i][j] = dp[i][j-1] || dp[i-2][j];
                         }
-                    } else if(pc == '.'){
+                    } else if(pc == '.' || pc == sc){
                         dp[i][j] = dp[i-1][j-1];
-                    } else if(pc == sc){
-                        dp[i][j] = dp[i-1][j-1];
-                    } else{
+                    }else{
                          dp[i][j] = false;
                     }
                 }
