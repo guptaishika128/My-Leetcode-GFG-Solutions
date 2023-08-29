@@ -1,7 +1,7 @@
 class Solution {
 public:
     long long solve(int idx, int prev , int x , vector<int>& nums , vector<vector<long long>>& dp){
-        if(idx == nums.size()){
+        if(idx >= nums.size()){
             return 0;
         }
         
@@ -24,6 +24,6 @@ public:
     
     long long maxScore(vector<int>& nums, int x) {
         vector<vector<long long>> dp(nums.size()+1, vector<long long>(2,-1));
-        return solve(0,nums[0]%2,x,nums,dp);
+        return nums[0] + solve(1,nums[0]%2,x,nums,dp);
     }
 };
