@@ -9,7 +9,7 @@ public:
         while(maxReach<n){
             
             for(int i=0;i<n+1;i++){
-                if(i-ranges[i]<=minReach && i+ranges[i]>maxReach){
+                if(i-ranges[i]<=minReach && i+ranges[i]>=maxReach){
                     maxReach = i +ranges[i];
                 }
             }
