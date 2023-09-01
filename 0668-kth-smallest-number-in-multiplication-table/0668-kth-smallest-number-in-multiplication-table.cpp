@@ -19,12 +19,12 @@ public:
             int mid = (low+high)/2;
             
             int cnt = count(m,n,mid);
-            if(cnt < k){
-                low = mid+1;
+            if(cnt >= k){
+               ans = mid;
+                high = mid-1;
             }
             else{
-                ans = mid;
-                high = mid-1;
+                low = mid+1;
             }
         }
         return ans;
