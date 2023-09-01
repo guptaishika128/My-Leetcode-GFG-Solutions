@@ -31,7 +31,7 @@ public:
         
         int low = *max_element(nums.begin(),nums.end());;
         int high = total;
-        
+        int ans = 0;
         while(low<=high){
             int mid = (low+high)/2;
             int noOfSplits = count(nums,mid);
@@ -39,9 +39,10 @@ public:
                 low = mid+1;
             }
             else{
+                ans = mid;
                 high = mid-1;
             }   
         }
-        return low;
+        return ans;
     }
 };
