@@ -1,27 +1,35 @@
 class Solution {
 public:
     
-    
-    void solve(vector<int>& nums, int idx, vector<int>& temp , set<vector<int>>& result){
-        int n = nums.size();
-        if(idx >= n){
-            if(temp.size()>1)
-                result.insert(temp);
-            return;
+   int n;
+   
+    void backtrack(vector<int>& nums, int idx, vector<int>& curr, vector<vector<int>>& result) {
+        if(curr.size() > 1)
+            result.push_back(curr);
+        
+        unordered_set<int> st;
+        for(int i = idx; i<n; i++) {
+            if((curr.empty() || nums[i]  >= curr.back()) && st.find(nums[i]) == st.end()) {
+                
+                curr.push_back(nums[i]);
+                backtrack(nums, i+1, curr, result);
+                curr.pop_back();
+                
+                st.insert(nums[i]);
+            }
         }
-        if(temp.size() == 0 || nums[idx]>=temp.back()){
-            temp.push_back(nums[idx]);
-            solve(nums,idx+1,temp,result);
-            temp.pop_back();
-        }
-        solve(nums,idx+1,temp,result);
     }
     
-    
     vector<vector<int>> findSubsequences(vector<int>& nums) {
-        vector<int> temp;
-        set<vector<int>> result;
-        solve(nums,0,temp,result);
-        return vector(result.begin(),result.end());
+        
+        n = nums.size();
+        vector<vector<int>> result;
+    
+        
+        vector<int> curr;
+        
+        backtrack(nums, 0, curr, result);
+        
+        return result;
     }
 };
