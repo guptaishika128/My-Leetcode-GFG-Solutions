@@ -1,22 +1,32 @@
 class Solution {
 public:
     int bestClosingTime(string customers) {
-        int start = 0;
-        int ans = 0;
         int n = customers.length();
-        int curr = 0;
         
+        int totalY = 0;
         for(int i=0;i<n;i++){
             if(customers[i] == 'Y'){
-                curr++;
-            } else if(customers[i] == 'N'){
-                curr--;
+               totalY++;
+               }
+        }
+               
+        int cntY = 0;
+        int cntN = 0;
+               int ans = totalY;
+        int ind = 0;
+        for(int i=0;i<n;i++){
+            if(customers[i] == 'Y'){
+                cntY++;
             }
-            if(ans<curr){
-                ans = curr;
-                start = i+1;
+            else{
+                cntN++;
+            }
+            int val = (totalY-cntY) + cntN;
+            if(val<ans){
+                ans = val;
+                ind = i+1;
             }
         }
-        return start;
+               return ind;
     }
 };
