@@ -12,7 +12,7 @@ public:
         {
             sum+=nums[j];
             mp[nums[j]]++;
-            while(j-i+1>k)
+            if(j-i+1>k)
             {
                 mp[nums[i]]--;
                 sum-=nums[i];
