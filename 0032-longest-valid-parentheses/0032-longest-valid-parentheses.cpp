@@ -4,6 +4,10 @@ public:
     int longestValidParentheses(string s) {
         int n = s.length();
         
+        if(n == 0){
+            return 0;
+        }
+        
         stack<int> st;
         
         st.push(-1);
