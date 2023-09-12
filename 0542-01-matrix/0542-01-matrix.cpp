@@ -33,7 +33,7 @@ public:
             for(int i=0;i<4;i++){
                 int nr = r + delRow[i];
                 int nc = c + delCol[i];
-                if(nr>=0 && nr<m && nc>=0 && nc<n && !visited[nr][nc] && mat[nr][nc] == 1){
+                if(nr>=0 && nr<m && nc>=0 && nc<n && !visited[nr][nc] ){
                     visited[nr][nc] = 1;
                     q.push({{nr,nc},dis+1});
                 }
