@@ -102,33 +102,19 @@ public:
       
                 }
             }
-        int numberOfIslands = 0;
         unordered_set<int> st;
-       vector<int> c(n*m,0);
+       
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(grid[i][j] == '0') { 
                     continue;
                 }
-                // int nodeNo = i*m + j;
-                // st.insert(ds.parent[nodeNo]);
-                
-                    int x = ds.findUPar(i*m+j);
- 
-                    // If frequency of set is 0,
-                    // increment numberOfIslands
-                    if (c[x]==0)
-                    {
-                        numberOfIslands++;
-                        c[x]++;
-                    }
- 
-                    else
-                        c[x]++;
+                int nodeNo = i*m + j;
+                st.insert(ds.findUPar(nodeNo));
             }
         }
         
-        return numberOfIslands;
+        return st.size();
          
     }
 };
