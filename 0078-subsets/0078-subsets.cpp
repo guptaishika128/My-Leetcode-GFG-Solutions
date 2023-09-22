@@ -1,27 +1,21 @@
 class Solution {
 public:
-    void printSubsets(vector<int>& nums, int index , vector<int>& ds,vector<vector<int>>& result,set<vector<int>>& s){
-        if(index>=nums.size()){
-  
-            if(s.find(ds)==s.end()){
-            s.insert(ds);
-            result.push_back(ds);
-            }
-            return;
-        }
+    void printSubsets(vector<int>& nums, int index , vector<int>& ds,vector<vector<int>>& result){
+       result.push_back(ds);
         
-        ds.push_back(nums[index]);
-        printSubsets(nums,index+1,ds,result,s);
+        for(int i = index;i<nums.size();i++)
+        {
+        ds.push_back(nums[i]);
+        printSubsets(nums,i+1,ds,result);
         ds.pop_back();
-        
-        printSubsets(nums,index+1,ds,result,s);
+        }
+        // printSubsets(nums,index+1,ds,result);
       
     }
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> result;
         vector<int> ds;
-        set<vector<int>> s;
-        printSubsets(nums,0,ds,result,s);
+        printSubsets(nums,0,ds,result);
         return result;
     }
 };
