@@ -80,6 +80,7 @@ public:
             } else{
                 ans.push_back(u);
                 ans.push_back(v);
+                break;
             }
         }
         return ans;
