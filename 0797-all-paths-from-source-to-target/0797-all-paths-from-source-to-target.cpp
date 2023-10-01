@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    void dfs(int node,vector<vector<int>>& graph, vector<int>& temp, vector<vector<int>>& result){
+    void dfs(int node,vector<vector<int>>& graph, vector<int> temp, vector<vector<int>>& result){
         temp.push_back(node);
         if(node == graph.size()-1){
             result.push_back(temp);
@@ -10,7 +10,7 @@ public:
                  dfs(it,graph,temp,result);
                 }
             }
-        temp.pop_back();
+        // temp.pop_back();
     }
 
     
