@@ -4,7 +4,7 @@ public:
         vector<int> S(stones.begin(),stones.end());
          int N = S.size();
         vector<int> dp(N);
-        for (int i = N - 2; ~i; i--) {
+        for (int i = N - 2; i>=0; i--) {
             int total = S[i];
             for (int j = i + 1; j < N; j++) {
                 total += S[j];
