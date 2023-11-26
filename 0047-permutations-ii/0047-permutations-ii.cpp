@@ -1,23 +1,20 @@
 class Solution {
 public:
-    vector<vector<int>> result;
-    set<vector<int>> st;
-    void solve(int idx,int n , vector<int>& nums){
-        
-        if(idx == n){
-            if(st.find(nums)==st.end()){
-                st.insert(nums);
-                result.push_back(nums);
-            }
+    void recursion(vector<int> num, int i, int j, vector<vector<int> > &res) {
+        if (i == j-1) {
+            res.push_back(num);
+            return;
         }
-        for(int j=idx;j<n;j++){
-            swap(nums[j],nums[idx]);
-            solve(idx+1,n,nums);
-            swap(nums[j],nums[idx]);
+        for (int k = i; k < j; k++) {
+            if (i != k && num[i] == num[k]) continue;
+            swap(num[i], num[k]);
+            recursion(num, i+1, j, res);
         }
     }
-    vector<vector<int>> permuteUnique(vector<int>& nums) {
-        solve(0,nums.size(),nums);
-        return result;
+    vector<vector<int> > permuteUnique(vector<int> &num) {
+        sort(num.begin(), num.end());
+        vector<vector<int> >res;
+        recursion(num, 0, num.size(), res);
+        return res;
     }
 };
