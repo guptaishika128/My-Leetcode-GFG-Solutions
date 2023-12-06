@@ -2,12 +2,13 @@ class Solution {
 public:
     int totalMoney(int n) {
         int ans = 0;
-        int s = 1;
+        int mon_amount = 1;
         while(n>0){
-            for(int i=0;i<7 && n-->0;i++){
-                ans += i+s;
+            for(int day=0;day<min(7,n);day++){
+                ans += day+mon_amount;
             }
-            s++;
+            n-=7;
+            mon_amount++;
         }
         return ans;
     }
