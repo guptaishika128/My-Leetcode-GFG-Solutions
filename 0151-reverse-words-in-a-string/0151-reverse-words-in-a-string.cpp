@@ -2,8 +2,8 @@ class Solution {
 public:
     string reverseWords(string s) {
         string result = "";
-        int n = s.length();
-        int i = 0;
+        int i=0;
+        int n=s.length();
         
         while(i<n){
             while(i<n && s[i] == ' '){
@@ -18,13 +18,13 @@ public:
             while(j<n && s[j] != ' '){
                 j++;
             }
-            
             string sub = s.substr(i,j-i);
             
-            if(result.length()==0){
+            if(result.length() == 0){
                 result = sub;
-            } else{
-                result = sub +" " + result;
+            }
+            else{
+                result = sub + " " + result;
             }
             i = j+1;
         }
